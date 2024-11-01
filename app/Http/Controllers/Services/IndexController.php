@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Services;
 
+use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,9 @@ final class IndexController
         $services = Service::query()->simplePaginate(config('app.pagination.Limit'));
 
         return new JsonResponse(
-            data: $services
+            data: ServiceResource::collection(
+                resource: $services
+            )
         );
     }
 }

@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Service::factory()->for($user)->count(100)->create();
+        Service::factory()->for($user)->create([
+            'name' => 'a2z-web',
+            'url' => 'www.a2z-web.com',
+        ]);
     }
 }
