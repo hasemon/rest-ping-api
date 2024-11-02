@@ -8,6 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use TiMacDonald\JsonApi\JsonApiResource;
+use TiMacDonald\JsonApi\Link;
 
 /** @property Service $resource */
 final class ServiceResource extends JsonApiResource
@@ -20,6 +21,13 @@ final class ServiceResource extends JsonApiResource
             'created' => new DateResource(
                 resource: $this->resource->created_at
             )
+        ];
+    }
+
+    public function toLinks(Request $request): array
+    {
+        return [
+            Link::self(route('v1:services:show', $this->resource))
         ];
     }
 

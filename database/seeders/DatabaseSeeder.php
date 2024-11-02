@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Check;
 use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,9 +20,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Service::factory()->for($user)->create([
+        $service = Service::factory()->for($user)->create([
             'name' => 'a2z-web',
             'url' => 'www.a2z-web.com',
         ]);
+
+        Check::factory()->for($service)->count(10)->create();
     }
 }
