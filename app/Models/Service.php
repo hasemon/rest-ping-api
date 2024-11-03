@@ -14,11 +14,11 @@ final class Service extends Model
 {
     use HasFactory, HasUlids;
 
-    /** @var array<int, string>  */
+    /** @var array<int, string> */
     protected $fillable = [
         'name',
         'url',
-        'user_id'
+        'user_id',
     ];
 
     /** @return BelongsTo<User> */
@@ -34,8 +34,8 @@ final class Service extends Model
     public function checks(): HasMany
     {
         return $this->hasMany(
-          related: Check::class,
-          foreignKey: 'service_id'
+            related: Check::class,
+            foreignKey: 'service_id'
         );
     }
 }

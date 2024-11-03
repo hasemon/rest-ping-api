@@ -9,7 +9,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
-
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web/routes.php',
@@ -31,8 +30,8 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(fn(UnprocessableEntityHttpException $exception, Request $request) => new JsonResponse(
-           data: $exception->getMessage(),status: 422
+        $exceptions->render(fn (UnprocessableEntityHttpException $exception, Request $request) => new JsonResponse(
+            data: $exception->getMessage(), status: 422
         ));
 
         $exceptions->render(fn (Throwable $exception, Request $request) => ErrorFactory::Create(

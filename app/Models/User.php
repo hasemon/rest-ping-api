@@ -12,18 +12,16 @@ use Illuminate\Notifications\Notifiable;
 
 final class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasUlids, SoftDeletes;
+    use HasFactory, HasUlids, Notifiable, SoftDeletes;
 
-
-    /** @var array<int, string>  */
+    /** @var array<int, string> */
     protected $fillable = [
         'name',
         'email',
         'password',
         'remember_token',
-        'email_verified_at'
+        'email_verified_at',
     ];
-
 
     protected $hidden = [
         'password',
@@ -47,7 +45,6 @@ final class User extends Authenticatable
             foreignKey: 'user_id'
         );
     }
-
 
     /** @return array<string, string>  */
     protected function casts(): array

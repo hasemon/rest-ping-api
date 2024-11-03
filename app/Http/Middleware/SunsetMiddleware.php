@@ -22,8 +22,7 @@ final class SunsetMiddleware
         );
 
         $response->headers->set(
-            key: 'Deprecated', values: now()->gte(Carbon::parse($date))? 'true': 'false');
-
+            key: 'Deprecated', values: now()->gte(Carbon::parse($date)) ? 'true' : 'false');
 
         return $response;
 

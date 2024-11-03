@@ -11,14 +11,13 @@ class Credential extends Model
 {
     use HasFactory, HasUlids;
 
-    /** @var array<int, string>  */
+    /** @var array<int, string> */
     protected $fillable = [
-      'name',
-      'type',
-      'value',
-      'user_id'
+        'name',
+        'type',
+        'value',
+        'user_id',
     ];
-
 
     /** @return BelongsTo<User> */
     public function user(): BelongsTo
@@ -34,7 +33,7 @@ class Credential extends Model
     {
         return [
             'type' => 'array',
-            'value' => 'encrypted'
+            'value' => 'encrypted',
         ];
     }
 }

@@ -11,9 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class ServiceFactory extends Factory
 {
-    /** @var class-string<Model>  */
+    /** @var class-string<Model> */
     protected $model = Service::class;
-
 
     /** @return array<string, mixed> */
     public function definition(): array
@@ -22,7 +21,7 @@ final class ServiceFactory extends Factory
             //
             'name' => $this->faker->company(),
             'url' => $this->faker->unique()->url(),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }

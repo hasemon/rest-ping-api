@@ -6,7 +6,6 @@ namespace App\Policies;
 
 use App\Models\Credential;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 final class CredentialPolicy
 {
@@ -29,9 +28,9 @@ final class CredentialPolicy
     {
         return $user->id === $credential->user_id;
     }
+
     public function delete(User $user, Credential $credential): bool
     {
         return $user->id === $credential->user_id;
     }
-
 }

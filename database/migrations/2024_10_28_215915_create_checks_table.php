@@ -33,7 +33,6 @@ return new class extends Migration
                 ->constrained('services')
                 ->cascadeOnDelete();
 
-
             $table->timestamps();
         });
     }

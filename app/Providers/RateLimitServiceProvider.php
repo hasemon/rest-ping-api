@@ -14,13 +14,13 @@ final class RateLimitServiceProvider extends ServiceProvider
     {
         RateLimiter::for(
             name: 'api',
-            callback: static fn(): Limit => Limit::perMinute(
+            callback: static fn (): Limit => Limit::perMinute(
                 maxAttempts: 60,
             ),
         );
         RateLimiter::for(
             name: 'auth',
-            callback: static fn(): Limit => Limit::perMinute(
+            callback: static fn (): Limit => Limit::perMinute(
                 maxAttempts: 5,
             )
         );

@@ -124,7 +124,7 @@ return [
     ],
 
     'pagination' => [
-        'Limit' => 10
-    ]
+        'Limit' => 10,
+    ],
 
 ];

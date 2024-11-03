@@ -12,8 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 final class CredentialFactory extends Factory
 {
-
-    /** @var class-string<Model>  */
+    /** @var class-string<Model> */
     protected $model = Credential::class;
 
     /** @return array<string, mixed> */
@@ -23,10 +22,10 @@ final class CredentialFactory extends Factory
             'name' => $this->faker->sentence(),
             'type' => [
                 'type' => CredentialType::Bearer_auth,
-                'prefix' => 'Bearer'
+                'prefix' => 'Bearer',
             ],
             'value' => $this->faker->uuid(),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }

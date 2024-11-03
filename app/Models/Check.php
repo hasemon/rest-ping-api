@@ -21,19 +21,17 @@ class Check extends Model
         'headers',
         'parameters',
         'credential_id',
-        'service_id'
+        'service_id',
     ];
-
 
     /** @return BelongsTo<Credential> */
     public function credential(): BelongsTo
     {
         return $this->belongsTo(
-          related: Credential::class,
-          foreignKey: 'credential_id'
+            related: Credential::class,
+            foreignKey: 'credential_id'
         );
     }
-
 
     /** @return BelongsTo<Service> */
     public function service(): BelongsTo
@@ -44,16 +42,13 @@ class Check extends Model
         );
     }
 
-
-
-
     /** @return array<string, string|class-string> */
     protected function casts(): array
     {
         return [
             'body' => 'json',
             'headers' => AsCollection::class,
-            'parameters' => AsCollection::class
+            'parameters' => AsCollection::class,
         ];
     }
 }

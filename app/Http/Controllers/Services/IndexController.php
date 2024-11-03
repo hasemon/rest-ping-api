@@ -19,8 +19,8 @@ final class IndexController
         )->allowedIncludes(
             includes: ['checks']
         )->allowedFilters(
-         filters: [
-             'url',
+            filters: [
+                'url',
             ]
         )->getEloquentBuilder()->simplePaginate(
             perPage: config('app.pagination.Limit')

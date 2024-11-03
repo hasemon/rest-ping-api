@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
-
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use JustSteveKing\Tools\Http\Enums\Status;
@@ -18,14 +17,14 @@ final class ErrorFactory
 {
     public static function Create(\Throwable $exception, Request $request): ErrorResponse
     {
-        return match ($exception::class){
+        return match ($exception::class) {
             NotFoundHttpException::class, ModelNotFoundException::class => new ErrorResponse(
-              data: new ApiError(
-                 title: 'Resource not found',
-                 detail: 'Requested resource does not exits',
-                 instance: $request->fullUrl(),
-                 code: 'HTTP-404',
-                 link: 'https://docs.a2z-web.com/errors/404',
+                data: new ApiError(
+                    title: 'Resource not found',
+                    detail: 'Requested resource does not exits',
+                    instance: $request->fullUrl(),
+                    code: 'HTTP-404',
+                    link: 'https://docs.a2z-web.com/errors/404',
                 )
             ),
             MethodNotAllowedHttpException::class,

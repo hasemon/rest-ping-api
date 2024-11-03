@@ -8,7 +8,6 @@ use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 
-
 final class CheckFactory extends Factory
 {
     /** @var class-string<Model> */
@@ -26,7 +25,7 @@ final class CheckFactory extends Factory
             'parameters' => null,
             'credential_id' => $this->faker->boolean() ?
                 Credential::factory() : null,
-            'service_id' => Service::factory()
+            'service_id' => Service::factory(),
         ];
     }
 }

@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use phpDocumentor\Reflection\Types\ClassString;
 
 final class UserFactory extends Factory
 {
-    /** @var class-string<Model>  */
+    /** @var class-string<Model> */
     protected $model = User::class;
 
     /** @return array<string,mixed> */
@@ -25,11 +24,12 @@ final class UserFactory extends Factory
             'email_verified_at' => now(),
         ];
     }
+
     public function unverified(): UserFactory
     {
         return $this->state(
             state: fn (array $attributes): array => [
-            'email_verified_at' => null,
-        ]);
+                'email_verified_at' => null,
+            ]);
     }
 }
