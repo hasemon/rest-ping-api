@@ -7,8 +7,11 @@ namespace App\Http\Controllers\Services;
 use App\Http\Requests\V1\Services\WriteRequest;
 use App\Http\Responses\V1\MessageResponse;
 use App\Jobs\Services\CreateNewService;
+use App\Models\Service;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 
 final readonly class StoreController
@@ -19,6 +22,12 @@ final readonly class StoreController
 
     public function __invoke(WriteRequest $request): Response|Responsable
     {
+        if (!Gate::allows('create', Service::class)) {
+            throw new UnauthorizedException(
+                message: 'You must verify before creating service',
+                code: Response::HTTP_FORBIDDEN
+            );
+        }
         $this->bus->dispatch(
             command: new CreateNewService(
                 payload: $request->payload()

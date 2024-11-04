@@ -5,27 +5,44 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Services;
 
 use App\Http\Requests\V1\Services\WriteRequest;
-use App\Http\Resources\V1\ServiceResource;
+use App\Http\Responses\V1\MessageResponse;
 use App\Jobs\Services\UpdateService;
 use App\Models\Service;
 use Illuminate\Bus\Dispatcher;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 final readonly class UpdateController
 {
     public function __construct(
         private Dispatcher $bus
-    )
-    {
+    ) {
 
     }
 
-    public function __invoke(WriteRequest $request, Service $service): Response {
+    public function __invoke(WriteRequest $request, Service $service): Responsable
+    {
+
+        if (!Gate::allows('update', $service)) {
+            throw new UnauthorizedException(
+                message: 'You must verify before update a service ou do not own',
+                code: Response::HTTP_FORBIDDEN
+            );
+        }
+
         $this->bus->dispatch(
             command: new UpdateService(
                 payload: $request->payload(),
+                service: $service,
             )
+        );
+
+        return new MessageResponse(
+            message: 'We will update your service in the background',
+            status: Response::HTTP_ACCEPTED
         );
     }
 }
