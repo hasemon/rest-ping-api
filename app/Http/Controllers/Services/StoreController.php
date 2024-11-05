@@ -24,7 +24,7 @@ final readonly class StoreController
     {
         if (!Gate::allows('create', Service::class)) {
             throw new UnauthorizedException(
-                message: 'You must verify before creating service',
+                message: __('services.v1.create.failure'),
                 code: Response::HTTP_FORBIDDEN
             );
         }
@@ -35,7 +35,7 @@ final readonly class StoreController
         );
 
         return new MessageResponse(
-            message: 'Service will be created in the background',
+            message: __('services.v1.create.success'),
             status: Response::HTTP_ACCEPTED
         );
 

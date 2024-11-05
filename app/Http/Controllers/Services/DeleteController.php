@@ -25,7 +25,7 @@ final readonly class DeleteController
     public function __invoke(Request $request, Service $service): MessageResponse {
         if (!Gate::allows('delete', Service::class)) {
             throw new UnauthorizedException(
-                message: 'You are not authorize to delete this service',
+                message: __('services.v1.delete.failure'),
                 code: Response::HTTP_FORBIDDEN
             );
         }
@@ -37,7 +37,7 @@ final readonly class DeleteController
         );
 
         return new MessageResponse(
-            message: 'Service will be deleted shortly',
+            message: __('services.v1.create.success'),
             status: Response::HTTP_ACCEPTED
         );
     }
