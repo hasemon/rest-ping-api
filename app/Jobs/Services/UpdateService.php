@@ -13,18 +13,16 @@ use Illuminate\Foundation\Queue\Queueable;
 final class UpdateService implements ShouldQueue
 {
     use Queueable;
+
     public function __construct(
         public readonly CreateService $payload,
         public readonly Service $service
-    )
-    {
-
-    }
+    ) {}
 
     public function handle(DatabaseManager $database): void
     {
         $database->transaction(
-            callback: fn() => $this->service->update(
+            callback: fn () => $this->service->update(
                 attributes: $this->payload->toArray()
             ),
             attempts: 3

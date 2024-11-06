@@ -15,15 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 final readonly class DeleteController
 {
-
     public function __construct(
         private Dispatcher $bus
-    )
-    {
-    }
+    ) {}
 
-    public function __invoke(Request $request, Service $service): MessageResponse {
-        if (!Gate::allows('delete', Service::class)) {
+    public function __invoke(Request $request, Service $service): MessageResponse
+    {
+        if (! Gate::allows('delete', Service::class)) {
             throw new UnauthorizedException(
                 message: __('services.v1.delete.failure'),
                 code: Response::HTTP_FORBIDDEN

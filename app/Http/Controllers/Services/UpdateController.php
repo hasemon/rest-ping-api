@@ -13,20 +13,17 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 final readonly class UpdateController
 {
     public function __construct(
         private Dispatcher $bus
-    ) {
-
-    }
+    ) {}
 
     public function __invoke(WriteRequest $request, Service $service): Responsable
     {
 
-        if (!Gate::allows('update', $service)) {
+        if (! Gate::allows('update', $service)) {
             throw new UnauthorizedException(
                 message: __('services.v1.update.failure'),
                 code: Response::HTTP_FORBIDDEN

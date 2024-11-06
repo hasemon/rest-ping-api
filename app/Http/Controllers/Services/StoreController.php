@@ -22,7 +22,7 @@ final readonly class StoreController
 
     public function __invoke(WriteRequest $request): Response|Responsable
     {
-        if (!Gate::allows('create', Service::class)) {
+        if (! Gate::allows('create', Service::class)) {
             throw new UnauthorizedException(
                 message: __('services.v1.create.failure'),
                 code: Response::HTTP_FORBIDDEN
