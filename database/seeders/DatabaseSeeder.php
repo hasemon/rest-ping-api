@@ -25,6 +25,14 @@ class DatabaseSeeder extends Seeder
             'url' => 'www.a2z-web.com',
         ]);
 
-        Check::factory()->for($service)->count(10)->create();
+        Check::factory()->for($service)->create([
+            'name' => 'Root check',
+            'path' => '/',
+            'method' => 'GET',
+            'headers' => [
+                'User-agent' => 'Ping service 1.0.0'
+            ]
+
+        ]);
     }
 }
