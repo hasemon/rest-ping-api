@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+use Treblle\Middlewares\TreblleMiddleware;
 use Treblle\SecurityHeaders\Http\Middleware\CertificateTransparencyPolicy;
 use Treblle\SecurityHeaders\Http\Middleware\ContentTypeOptions;
 use Treblle\SecurityHeaders\Http\Middleware\PermissionsPolicy;
@@ -33,7 +34,8 @@ return Application::configure(basePath: dirname(__DIR__))
             StrictTransportSecurity::class,
             PermissionsPolicy::class,
             ContentTypeOptions::class,
-            CertificateTransparencyPolicy::class
+            CertificateTransparencyPolicy::class,
+            TreblleMiddleware::class
         ]);
 
         $middleware->alias([

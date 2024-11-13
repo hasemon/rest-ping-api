@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
             'path' => '/',
             'method' => 'GET',
             'headers' => [
-                'User-agent' => 'Ping service 1.0.0'
-            ]
+                'User-agent' => 'Ping service 1.0.0',
+            ],
 
         ]);
     }

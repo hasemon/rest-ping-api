@@ -46,13 +46,13 @@ class SendPing implements ShouldQueue
             method: $this->check->method,
             url: $this->check->path,
             options: [
-                'json' => $this->check->json
+                'json' => $this->check->json,
             ]
         );
 
         $stats = $response->transferStats->getHandlerStats();
         $database->transaction(
-            callback: fn() => $this->check->reports()->create(
+            callback: fn () => $this->check->reports()->create(
                 attributes: [
                     'url' => $stats['url'],
                     'content_type' => $stats['content_type'],
@@ -69,7 +69,7 @@ class SendPing implements ShouldQueue
                     'starttransfer_time' => $stats['starttransfer_time_us'],
                     'total_time' => $stats['total_time_us'],
                     'started_at' => $start,
-                    'finished_at' => now()
+                    'finished_at' => now(),
                 ]
             ),
             attempts: 3

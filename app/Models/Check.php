@@ -37,9 +37,8 @@ class Check extends Model
     /** @return HasMany<Report> */
     public function reports(): HasMany
     {
-        return $this->hasMany( related: Report::class, foreignKey: 'check_id');
+        return $this->hasMany(related: Report::class, foreignKey: 'check_id');
     }
-
 
     /** @return BelongsTo<Service> */
     public function service(): BelongsTo

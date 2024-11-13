@@ -9,6 +9,7 @@ use App\Models\Check;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Symfony\Component\Console\Attribute\AsCommand;
+
 use function Laravel\Prompts\info;
 
 #[AsCommand(name: 'ping', description: 'Run through all checks and perform a ping')]
@@ -26,7 +27,7 @@ final class Ping extends Command
             );
             $bus->dispatchNow(
                 command: new SendPing(
-                 check: $check
+                    check: $check
                 )
             );
         }

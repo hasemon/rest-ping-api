@@ -17,20 +17,19 @@ final class Report extends Model
     use HasFactory;
     use HasUlids;
 
-    /** @var array<int, string>  */
+    /** @var array<int, string> */
     protected $fillable = [
         'url', 'content_type', 'status', 'header_size', 'request_size',
         'redirect_count', 'http_version', 'appconnect_time', 'connect_time',
         'namelookup_time', 'pretransfer_time', 'redirect_time', 'starttransfer_time',
-        'total_time', 'check_id', 'started_at', 'finished_at'
+        'total_time', 'check_id', 'started_at', 'finished_at',
     ];
 
     /** @return BelongsTo<Check> */
-    public function check():BelongsTo
+    public function check(): BelongsTo
     {
         return $this->belongsTo(related: Check::class, foreignKey: 'check_id');
     }
-
 
     /** @return array<string,string> */
     protected function casts(): array

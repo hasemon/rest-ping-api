@@ -14,8 +14,7 @@ class CheckFailed extends Notification implements ShouldQueue
 
     public function __construct(
         public readonly Check $check
-    )
-    {
+    ) {
         //
     }
 
@@ -28,16 +27,15 @@ class CheckFailed extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject("FAILED: Your check for {$this->check->name} has failed.")
-                    ->line('Service checked: Service is down!')
-                    ->line('Thank you for using our application!');
+            ->line('Service checked: Service is down!')
+            ->line('Thank you for using our application!');
     }
-
 
     public function toArray(object $notifiable): array
     {
         return [
             'check' => $this->check->id,
-            'message' => "Your check for {$this->check->name} has failed."
+            'message' => "Your check for {$this->check->name} has failed.",
         ];
     }
 }

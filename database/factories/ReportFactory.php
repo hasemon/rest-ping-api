@@ -15,6 +15,7 @@ final class ReportFactory extends Factory
 {
     /** @var string<Model> */
     protected $model = Report::class;
+
     /**
      * @return array<string,mixed>
      */
@@ -46,7 +47,7 @@ final class ReportFactory extends Factory
                 value: $this->faker->numberBetween(
                     int2: 4
                 )
-            )
+            ),
         ];
     }
 }

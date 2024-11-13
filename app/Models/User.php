@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 final class User extends Authenticatable
 {
-    use HasFactory, HasUlids, Notifiable, SoftDeletes;
+    use HasFactory, HasUlids, Notifiable, SoftDeletes, HasApiTokens;
 
     /** @var array<int, string> */
     protected $fillable = [
