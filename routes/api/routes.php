@@ -29,6 +29,7 @@ Route::prefix('v1')->as('v1:')->group(static function (): void {
         Route::prefix('checks')->as('checks:')->group(base_path(
             path: 'routes/api/v1/checks.php'
         ));
+
     });
 });
 

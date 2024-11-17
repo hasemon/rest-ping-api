@@ -12,6 +12,6 @@ Route::middleware([])->group(static function () {
     Route::get('{ulid}', Services\ShowController::class)->name('show');
 });
 
-Route::get('{ulid}', Services\ShowController::class)->name('show');
+//Route::get('{ulid}', Services\ShowController::class)->name('show');
 Route::put('{service}', Services\UpdateController::class)->name('update');
 Route::delete('{service}', Services\DeleteController::class)->name('delete');
