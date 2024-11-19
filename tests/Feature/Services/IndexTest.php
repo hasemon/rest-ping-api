@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\Services\IndexController;
 use App\Models\Service;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Symfony\Component\HttpFoundation\Response;
 use function Pest\Laravel\actingAs;
