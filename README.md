@@ -1,1 +1,1 @@
-# test-api-course
+# test ping performance of a website
